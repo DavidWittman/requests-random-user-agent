@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+twine = "*"
+
+[packages]
+
+[scripts]
+test = "python -m unittest discover tests/"
+
+[requires]
+python_version = "3.7"
