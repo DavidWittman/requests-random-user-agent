@@ -1,1 +1,3 @@
 include requests_random_user_agent/useragents.txt
+include README.md
+include LICENSE
