@@ -32,5 +32,33 @@ class TestRandomUserAgent(unittest.TestCase):
             self.assertFalse(_is_illegal_header_value(ua.encode('utf8')), ua)
 
     def test_request(self):
-        resp = self.session.get('https://httpbin.org/status/200')
+        resp = self.session.get('https://httpbin.org/user-agent')
+
         self.assertEqual(resp.status_code, 200)
+        user_agent = resp.json()['user-agent']
+
+        self.assertEqual(
+            self.session.headers['User-Agent'],
+            user_agent
+        )
+
+        self.assertNotIn(
+            "python-requests",
+            user_agent
+        )
+
+    def test_request_without_session(self):
+        resp = requests.get('https://httpbin.org/user-agent')
+
+        self.assertEqual(resp.status_code, 200)
+        user_agent = resp.json()['user-agent']
+
+        self.assertIn(
+            user_agent,
+            requests_random_user_agent.USER_AGENTS
+        )
+
+        self.assertNotIn(
+            "python-requests",
+            user_agent
+        )
