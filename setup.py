@@ -1,13 +1,20 @@
+import re
 import setuptools
 
-from requests_random_user_agent import __version__
+def find_version(path):
+    version_file = open(path).read()
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                              version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
 
 with open('README.md') as f:
     long_description = f.read()
 
 setuptools.setup(
     name="requests_random_user_agent",
-    version=__version__,
+    version=find_version("requests_random_user_agent/__init__.py"),
     author="David Wittman",
     author_email="david@wittman.com",
     description="Automatically generate a random User Agent for the requests library",
