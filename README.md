@@ -1,6 +1,12 @@
-# requests-random-user-agent [![Build Status](https://travis-ci.org/DavidWittman/requests-random-user-agent.svg?branch=master)](https://travis-ci.org/DavidWittman/requests-random-user-agent)
+# requests-random-user-agent [![Build Status](https://travis-ci.org/DavidWittman/requests-random-user-agent.svg?branch=master)](https://travis-ci.org/DavidWittman/requests-random-user-agent) ![PyPI](https://img.shields.io/pypi/v/requests-random-user-agent.svg)
 
 Configures the requests library to automatically use a popular desktop User-Agent.
+
+### Installation
+
+```
+pip install requests-random-user-agent
+```
 
 ### Usage
 
