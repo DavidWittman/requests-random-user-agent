@@ -1,14 +1,20 @@
----
 language: python
 python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "3.7-dev"
-
+- '3.4'
+- '3.5'
+- '3.6'
+- 3.7-dev
 install:
-  - pip install -U pipenv
-  - pipenv install --dev
-
+- pip install -U pipenv
+- pipenv install --dev
 script:
-  - make test
+- make test
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: wittmaniac
+  password:
+    secure: NH3B/I9aC82wmpr9EA5qOCPrR5xjU/pKY8I9KanbN5un69/eliVjyVoHterBCkWCRFs6bgmwI9ZCdE2uT7VseNzPCRKgvFUnN61DAZNafkHqF6T8ycvpifK8F4U5S2AqfbTrTMSiqX3QhftrDrATOI67Q5NNRHH/r6cg4Pw7MGgGy76GFKJ3aet98sIdjpi+RA56DdwlA7v9SiJBGs0U1jAGJwTJcEHLGXBInw+lTdUNpp/sNsW7L0IkqEH7zs5aq5Atp6tOS3uDDnHLy0LYKvaMMA/YxtUEH3gQRusUGYyku2Vx9aCzovnnkjbypbowhO4AvYB1O4L+AfhZZ3B9qwsjMBIgIKxRs90PcQxqqA+/U7Oo9tKduLKTmknzlA2FYPpIsmhhMwLlGZuK941taWC2UeDQx0rYiRJ+GjrTR7Gnpm5l50TA1LfEsgrJFTUQvHyaYVMCEut3lHNRhzlLZWB3VCxSmqxGpvys3asIEQCIeJyH8fh+l1Qeu+hgcp8DzJ9PZdDULkexoNVsOedHFqCfk46gdz/HatJIatcJWNZ5PbViVIc1YY83pZkA5Wcnmabd4zDOxE4hEBr96JqMg9gj0emFXqa5dI1JBReRGbLnJk63/TN+VAn8QqgH5XBkaB0RsotrQB3JG4YdVF5d5kp95P9eA4NUURbD20hZZeE=
+  on:
+    tags: true
+  skip_existing: true

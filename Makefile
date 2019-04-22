@@ -1,5 +1,5 @@
 clean:
-	rm -rf dist/ *.egg-info
+	rm -rf build/ dist/ *.egg-info
 
 dist: setup.py requests_random_user_agent/__init__.py
 	pipenv run python setup.py sdist
