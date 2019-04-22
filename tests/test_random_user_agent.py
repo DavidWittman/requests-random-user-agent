@@ -1,4 +1,7 @@
+import re
 import unittest
+
+from http.client import _is_illegal_header_value
 
 import requests
 import requests_random_user_agent
@@ -23,6 +26,10 @@ class TestRandomUserAgent(unittest.TestCase):
             self.session.headers['User-Agent'],
             requests.Session().headers['User-Agent']
         )
+
+    def test_user_agent_values(self):
+        for ua in requests_random_user_agent.USER_AGENTS:
+            self.assertFalse(_is_illegal_header_value(ua.encode('utf8')), ua)
 
     def test_request(self):
         resp = self.session.get('https://httpbin.org/status/200')
