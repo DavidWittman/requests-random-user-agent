@@ -11,4 +11,4 @@ install:
   - pipenv install --dev
 
 script:
-  - pipenv run test
+  - make test
