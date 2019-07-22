@@ -62,3 +62,19 @@ class TestRandomUserAgent(unittest.TestCase):
             "python-requests",
             user_agent
         )
+
+    def test_request_different_without_session(self):
+        # TODO(dw): This will occasionally fail because it can
+        # randomly pick the same UA twice
+        resp = requests.get('https://httpbin.org/user-agent')
+        self.assertEqual(resp.status_code, 200)
+        first_user_agent = resp.json()['user-agent']
+
+        resp = requests.get('https://httpbin.org/user-agent')
+        self.assertEqual(resp.status_code, 200)
+        second_user_agent = resp.json()['user-agent']
+
+        self.assertNotEqual(
+            first_user_agent,
+            second_user_agent
+        )
