@@ -1,3 +1,4 @@
+import sys
 import unittest
 
 try:
@@ -33,7 +34,10 @@ class TestRandomUserAgent(unittest.TestCase):
 
     def test_user_agent_values(self):
         for ua in requests_random_user_agent.USER_AGENTS:
-            self.assertFalse(_is_illegal_header_value(ua.encode('utf8')), ua)
+            if sys.version_info > (3, 0):
+                self.assertFalse(_is_illegal_header_value(ua.encode('utf8')), ua)
+            else:
+                self.assertFalse(_is_illegal_header_value(ua), ua)
 
     def test_request(self):
         resp = self.session.get('https://httpbin.org/user-agent')
