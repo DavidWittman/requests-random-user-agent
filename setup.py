@@ -1,6 +1,7 @@
 import re
 import setuptools
 
+
 def find_version(path):
     version_file = open(path).read()
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
@@ -8,6 +9,7 @@ def find_version(path):
     if version_match:
         return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
+
 
 with open('README.md') as f:
     long_description = f.read()

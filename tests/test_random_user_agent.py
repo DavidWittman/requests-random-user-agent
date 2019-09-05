@@ -1,10 +1,14 @@
-import re
 import unittest
 
-from http.client import _is_illegal_header_value
+try:
+    from http.client import _is_illegal_header_value
+# Python 2.7 support
+except ImportError:
+    from httplib import _is_illegal_header_value
 
 import requests
-import requests_random_user_agent
+import requests_random_user_agent   # noqa: F401
+
 
 class TestRandomUserAgent(unittest.TestCase):
     def setUp(self):
