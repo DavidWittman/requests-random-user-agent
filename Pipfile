@@ -11,6 +11,3 @@ lxml = "*"
 
 [scripts]
 test = "python -m unittest discover tests/"
-
-[requires]
-python_version = "3.7"
