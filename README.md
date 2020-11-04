@@ -23,3 +23,5 @@ print(resp.json()['user-agent'])
 ```
 
 User-Agents are randomized per-session or per-request. Individual HTTP requests without a session will each have a random User-Agent selected from the list in useragents.txt.
+
+Android user agents provided by [WhatIsMyBrowser](whatismybrowser.com).
