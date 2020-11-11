@@ -3,7 +3,7 @@ import random
 
 import requests.utils
 
-__version__ = "2020.10.19"
+__version__ = "2020.11.11"
 
 USER_AGENTS_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'useragents.txt')
 with open(USER_AGENTS_FILE) as fh:
