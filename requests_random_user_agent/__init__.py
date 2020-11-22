@@ -11,7 +11,7 @@ USER_AGENTS_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'us
 with open(USER_AGENTS_FILE) as fh:
     USER_AGENTS = fh.read().splitlines()
 
-ANDROID_USER_AGENTS_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'anduseragents.txt')
+ANDROID_USER_AGENTS_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'android_useragents.txt')
 with open(ANDROID_USER_AGENTS_FILE) as fh:
     AND_USER_AGENTS = fh.read().splitlines()
 

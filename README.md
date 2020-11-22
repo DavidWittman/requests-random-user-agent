@@ -24,5 +24,6 @@ print(resp.json()['user-agent'])
 
 User-Agents are randomized per-session or per-request. Individual HTTP requests without a session will each have a random User-Agent selected from the list in useragents.txt.
 
-Android user agents provided by [WhatIsMyBrowser](whatismybrowser.com). Set `UA_PLATFORM=android` environment variable to
-activate the Android based user-agents typically for mobile API testing / fuzzing.
+#### Android User-Agents
+
+Set the environment variable `UA_PLATFORM=android` to use a list of [Android-specific User-Agents](requests_random_user_agent/android_useragents.txt) instead. List provided by [WhatIsMyBrowser](whatismybrowser.com).
