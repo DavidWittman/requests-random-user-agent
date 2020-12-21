@@ -3,7 +3,7 @@ import random
 
 import requests.utils
 
-__version__ = "2020.12.04"
+__version__ = "2020.12.20"
 
 UA_PLATFORM = os.getenv('UA_PLATFORM')
 
