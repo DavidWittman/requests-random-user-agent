@@ -20,7 +20,11 @@ scrape:
 	mv useragents.txt requests_random_user_agent/
 
 version:
+ifeq ($(shell uname), Darwin)
 	sed -i '' 's/__version__.*/__version__ = "$(VERSION)"/' "$(PROJECT)/__init__.py"
+else
+	sed -i 's/__version__.*/__version__ = "$(VERSION)"/' "$(PROJECT)/__init__.py"
+endif
 	git add "$(PROJECT)/__init__.py" "$(PROJECT)/useragents.txt"
 	git commit -m "Update useragents.txt"
 	git tag $(VERSION)
