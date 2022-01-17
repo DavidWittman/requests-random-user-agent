@@ -16,7 +16,7 @@ test:
 # Must do this in two separate steps otherwise the random agent selection
 # used in the scraper will fail because the useragents.txt file is empty
 scrape:
-	PYTHONPATH=. pipenv run scripts/scrape.py | sort | sed '/^$$/d; /^User_Agent$$/d' > useragents.txt
+	PYTHONPATH=. pipenv run scripts/scrape.py | sort | sed '/^$$/d; /^null$$/d; /^User_Agent$$/d' > useragents.txt
 	mv useragents.txt requests_random_user_agent/
 
 version:
