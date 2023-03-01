@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: 3.x
 
-       - name: Install dependencies from Pipfile
+      - name: Install dependencies from Pipfile
         run: |
           pip install pipenv
           pipenv install --dev
