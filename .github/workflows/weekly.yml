@@ -1,0 +1,30 @@
+name: Weekly Update
+
+on:
+  schedule:
+    - cron: '11 0 * * 3' # Run every Wednesday at around midnight
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+       - name: Install dependencies from Pipfile
+        run: |
+          pip install pipenv
+          pipenv install --dev
+
+      - name: Update useragents.txt
+        run: make scrape smoketest version
+
+      - name: Push new tag
+        run: |
+          git push
+          git push --tags

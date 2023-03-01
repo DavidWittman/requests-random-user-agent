@@ -10,14 +10,20 @@ dist: setup.py requests_random_user_agent/__init__.py
 upload: clean dist
 	pipenv run python -m twine upload dist/*
 
-test:
-	pipenv run python -m unittest discover tests/
-
 # Must do this in two separate steps otherwise the random agent selection
 # used in the scraper will fail because the useragents.txt file is empty
 scrape:
-	PYTHONPATH=. pipenv run scripts/scrape.py | sort | sed '/^$$/d; /^null$$/d; /^User_Agent$$/d' > useragents.txt
-	mv useragents.txt requests_random_user_agent/
+	PYTHONPATH=. pipenv run scripts/scrape.py | grep -e '^Mozilla' | sort > useragents.txt
+	mv useragents.txt $(PROJECT)/
+
+test:
+	pipenv run python -m unittest discover tests/
+
+smoketest:
+  @if test $(shell wc -l < $(PROJECT)/useragents.txt) -lt 10; then \
+    echo "useragents.txt has fewer than 10 lines; failing."; false; \
+  fi
+
 
 version:
 ifeq ($(shell uname), Darwin)
@@ -29,4 +35,4 @@ endif
 	git commit -m "Update useragents.txt"
 	git tag $(VERSION)
 
-.PHONY: clean upload test scrape version
+.PHONY: clean upload test scrape version smoketest
