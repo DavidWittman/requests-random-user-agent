@@ -20,10 +20,9 @@ test:
 	pipenv run python -m unittest discover tests/
 
 smoketest:
-  @if test $(shell wc -l < $(PROJECT)/useragents.txt) -lt 10; then \
-    echo "useragents.txt has fewer than 10 lines; failing."; false; \
-  fi
-
+	@if test $(shell wc -l < $(PROJECT)/useragents.txt) -lt 10; then \
+		echo "useragents.txt has fewer than 10 lines; failing."; false; \
+	fi
 
 version:
 ifeq ($(shell uname), Darwin)
