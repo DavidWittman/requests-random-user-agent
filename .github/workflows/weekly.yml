@@ -2,7 +2,7 @@ name: Weekly Update
 
 on:
   schedule:
-    - cron: '11 2 * * 0' # Run every Sunday at 2:11 utc
+    - cron: '0 5 * * 0' # Run every Sunday morning
 
 jobs:
   build:
