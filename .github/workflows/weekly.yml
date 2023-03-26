@@ -29,6 +29,8 @@ jobs:
           make scrape smoketest version
 
       - name: Push new tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git push
           git push --tags
