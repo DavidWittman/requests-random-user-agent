@@ -1,8 +1,7 @@
 name: Weekly Update
 
 on:
-  repository_dispatch:
-    types: [test-schedule]
+  workflow_dispatch:
   schedule:
     - cron: '0 5 * * 0' # Run every Sunday morning
 
