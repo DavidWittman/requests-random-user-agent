@@ -23,11 +23,12 @@ jobs:
           pipenv install --dev
 
       - name: Update useragents.txt
-        run: make scrape smoketest version
-
-      - name: Push new tag
         run: |
           git config --global user.email "davidwittman@users.noreply.github.com"
           git config --global user.name "David Wittman"
+          make scrape smoketest version
+
+      - name: Push new tag
+        run: |
           git push
           git push --tags
