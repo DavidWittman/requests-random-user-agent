@@ -3,7 +3,7 @@ name: Weekly Update
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 5 * * 0' # Run every Sunday morning
+    - cron: '0 5 * * 3' # Run every Sunday morning
 
 jobs:
   build:
